@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gramudyog Margdarshak – Scheme Guide for Rural Entrepreneurs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Mukta:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:light;--bg:#fff;--card:#fff;--ink:#0b2545;--mute:#4a5f7a;--green:#1565c0;--gold:#90caf9;--tint:#eaf3fe;--line:#c9dcf3}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Mukta,"Noto Sans Devanagari",system-ui,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;font-size:17px}
+h1,h2,h3{font-family:"Baloo 2","Noto Sans Devanagari",sans-serif;line-height:1.2;margin:0 0 .5rem}
+a{color:var(--green)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 18px}
+header{position:sticky;top:0;z-index:5;background:var(--bg);border-bottom:1px solid var(--line)}
+.bar{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;flex-wrap:wrap}
+.logo{font-family:"Baloo 2",sans-serif;font-weight:800;font-size:1.2rem}
+nav a{margin-right:14px;text-decoration:none;color:var(--ink);font-weight:600}
+.lang button{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:6px 12px;font:inherit;cursor:pointer}
+.lang button:first-child{border-radius:20px 0 0 20px}.lang button:last-child{border-radius:0 20px 20px 0}
+.lang button[aria-pressed=true]{background:var(--green);color:#fff;border-color:var(--green)}
+.hero{padding:44px 0 34px;background:var(--tint);border-bottom:4px solid var(--gold)}
+.hero h1{font-size:clamp(2rem,6vw,3.4rem);font-weight:800;max-width:16ch}
+.hero p{max-width:56ch;color:var(--mute);font-size:1.1rem}
+.btn{display:inline-block;background:var(--green);color:#fff;padding:11px 22px;border-radius:8px;text-decoration:none;font-weight:600;border:0;font-size:1rem;cursor:pointer}
+.btn.alt{background:var(--gold);color:#0b2545;margin-left:8px}
+.stats{display:flex;gap:26px;flex-wrap:wrap;margin-top:26px}
+.stats b{font-family:"Baloo 2",sans-serif;font-size:1.7rem;display:block}
+.stats span{color:var(--mute);font-size:.95rem}
+section{padding:42px 0}
+h2{font-size:1.8rem}
+.sub{color:var(--mute);margin-bottom:18px}
+.tools{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:18px}
+input[type=search]{flex:1;min-width:200px;padding:10px 14px;border:1px solid var(--line);border-radius:8px;font:inherit;background:var(--card);color:var(--ink)}
+.chip{border:1px solid var(--line);background:var(--card);color:var(--ink);padding:8px 14px;border-radius:20px;font:inherit;cursor:pointer}
+.chip[aria-pressed=true]{background:var(--ink);color:var(--bg)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:10px;padding:18px}
+.card h3{font-size:1.2rem}
+.tag{display:inline-block;background:var(--tint);color:var(--green);font-size:.82rem;padding:2px 10px;border-radius:12px;margin-bottom:8px;font-weight:600}
+.card .big{font-weight:600;margin:.4rem 0}
+.card details summary{cursor:pointer;font-weight:600;color:var(--green);margin-top:8px}
+.card ul{padding-left:18px;margin:6px 0}
+.steps{counter-reset:s;display:grid;gap:14px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px 16px 16px 66px;position:relative}
+.step::before{counter-increment:s;content:counter(s);position:absolute;left:16px;top:14px;width:36px;height:36px;border-radius:50%;background:var(--gold);color:#0b2545;font:800 1.2rem "Baloo 2",sans-serif;display:grid;place-items:center}
+.docs{list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:10px}
+.docs label{display:flex;gap:10px;align-items:center;background:var(--card);border:1px solid var(--line);padding:12px;border-radius:8px;cursor:pointer}
+.docs input{width:20px;height:20px;accent-color:var(--green)}
+#prog{font-weight:600;color:var(--green);margin-bottom:10px}
+.faq details{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:12px 16px;margin-bottom:10px}
+.faq summary{font-weight:600;cursor:pointer}
+.help{background:var(--ink);color:var(--bg)}
+.help a{color:var(--gold);font-weight:600}
+footer{padding:24px 0;color:var(--mute);font-size:.9rem;text-align:center}
+.empty{padding:20px;color:var(--mute)}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<header><div class="wrap bar">
+ <div class="logo">💼 Gramudyog Margdarshak</div>
+ <nav id="nav"></nav>
+ <div class="lang" role="group" aria-label="Language">
+  <button data-l="en" aria-pressed="true">English</button><button data-l="hi" aria-pressed="false">हिन्दी</button><button data-l="mr" aria-pressed="false">मराठी</button>
+ </div>
+</div></header>
+
+<div class="hero"><div class="wrap">
+ <h1 id="h1"></h1><p id="hp"></p>
+ <a class="btn" href="#schemes" id="b1"></a><a class="btn alt" href="#steps" id="b2"></a>
+ <div class="stats" id="stats"></div>
+</div></div>
+
+<section id="schemes"><div class="wrap">
+ <h2 id="t1"></h2><p class="sub" id="s1"></p>
+ <div class="tools"><input type="search" id="q" aria-label="Search"><span id="chips"></span></div>
+ <div class="grid" id="grid"></div>
+</div></section>
+
+<section id="steps" style="background:var(--tint)"><div class="wrap">
+ <h2 id="t2"></h2><p class="sub" id="s2"></p>
+ <div class="steps" id="stepList"></div>
+</div></section>
+
+<section id="docs"><div class="wrap">
+ <h2 id="t3"></h2><p class="sub" id="s3"></p>
+ <div id="prog"></div><ul class="docs" id="docList"></ul>
+</div></section>
+
+<section id="faq" style="background:var(--tint)"><div class="wrap">
+ <h2 id="t4"></h2><div class="faq" id="faqList"></div>
+</div></section>
+
+<section class="help" id="help"><div class="wrap">
+ <h2 id="t5"></h2><p id="hl"></p>
+</div></section>
+
+<footer><div class="wrap" id="foot"></div></footer>
+
+<script>
+const T={
+en:{nav:["Schemes","How to apply","Documents","FAQ","Help"],
+h1:"Find the government scheme that fits your business",
+hp:"Simple, step-by-step information for rural entrepreneurs in Maharashtra. Pick a language, find a scheme, and learn exactly how to apply.",
+b1:"Find schemes",b2:"How to apply",
+stats:[["8","schemes explained"],["3","languages"],["0","fees to apply on official portals"]],
+t1:"Government schemes",s1:"Search or choose a category. Tap “Details” on any card.",
+q:"Search schemes…",
+cats:{all:"All",loan:"Loans",subsidy:"Subsidy",women:"Women",reg:"Registration",skill:"Training"},
+benefit:"Benefit",who:"Who can apply",how:"How to apply",det:"Details",site:"Open official site",none:"No scheme found. Try another word or category.",
+t2:"How to apply: 5 simple steps",s2:"Follow these in order, from idea to money in your bank account.",
+steps:[["Get your Udyam registration","Free online registration of your business on the Udyam portal. It needs only Aadhaar and PAN."],["Open a bank account","Use a savings or current account in your own or your business name. Most schemes pay through the bank."],["Choose a scheme","Use the list above. Match your business type, your category (women, SC/ST, etc.) and the amount you need."],["Prepare your documents","Use the checklist below. Keep photocopies and soft copies ready."],["Apply online or at the bank","Apply on the official portal, or visit your District Industries Centre (DIC) or bank branch. Ask for help from the Gram Panchayat office if needed."]],
+t3:"Documents checklist",s3:"Tick what you already have. Your progress stays on this page.",
+docs:["Aadhaar card","PAN card","Bank passbook / account details","Passport-size photographs","Address proof (light bill, ration card)","Caste certificate (if applicable)","Project report / business idea on paper","Udyam registration certificate"],
+prog:(a,b)=>`${a} of ${b} documents ready`,
+t4:"Common questions",
+faq:[["Do I need to pay an agent to apply?","No. Applying on official government portals is free. Do not pay anyone who promises a guaranteed loan or subsidy."],["I do not have good internet. What can I do?","Visit your District Industries Centre, a bank branch, a Common Service Centre (CSC) or the Gram Panchayat office. They can help you apply."],["Can women get extra benefits?","Yes. Many schemes give women a higher subsidy, lower interest or special loans. See the Women category."],["Is a loan guarantee needed?","Mudra loans up to ₹10 lakh and many MSME loans do not need collateral. Check with the bank for your case."]],
+t5:"Need help?",hl:`MSME helpline: <a href="tel:18001806763">1800-180-6763</a> (toll-free). Or visit your nearest District Industries Centre (DIC).`,
+foot:"This is an information guide for a student project. Amounts and rules can change. Always confirm on the official website before you apply."},
+hi:{nav:["योजनाएँ","आवेदन कैसे करें","दस्तावेज़","प्रश्न","मदद"],
+h1:"अपने व्यवसाय के लिए सही सरकारी योजना खोजें",
+hp:"महाराष्ट्र के ग्रामीण उद्यमियों के लिए सरल जानकारी। भाषा चुनें, योजना खोजें और आवेदन का तरीका जानें।",
+b1:"योजनाएँ देखें",b2:"आवेदन कैसे करें",
+stats:[["8","योजनाओं की जानकारी"],["3","भाषाएँ"],["0","सरकारी पोर्टल पर आवेदन शुल्क"]],
+t1:"सरकारी योजनाएँ",s1:"खोजें या श्रेणी चुनें। किसी भी कार्ड पर “विवरण” दबाएँ।",
+q:"योजना खोजें…",
+cats:{all:"सभी",loan:"ऋण",subsidy:"सब्सिडी",women:"महिला",reg:"पंजीकरण",skill:"प्रशिक्षण"},
+benefit:"लाभ",who:"कौन आवेदन कर सकता है",how:"आवेदन कैसे करें",det:"विवरण",site:"आधिकारिक साइट खोलें",none:"कोई योजना नहीं मिली। दूसरा शब्द या श्रेणी आज़माएँ।",
+t2:"आवेदन कैसे करें: 5 आसान कदम",s2:"विचार से बैंक में पैसे तक, इसी क्रम में चलें।",
+steps:[["उद्यम पंजीकरण करें","उद्यम पोर्टल पर व्यवसाय का मुफ़्त ऑनलाइन पंजीकरण। केवल आधार और पैन चाहिए।"],["बैंक खाता खोलें","अपने या व्यवसाय के नाम पर बचत या चालू खाता रखें। अधिकतर योजनाएँ बैंक से पैसा देती हैं।"],["योजना चुनें","ऊपर की सूची देखें। अपने व्यवसाय, श्रेणी (महिला, SC/ST आदि) और ज़रूरी राशि से मिलाएँ।"],["दस्तावेज़ तैयार करें","नीचे की सूची देखें। फोटोकॉपी और डिजिटल प्रति तैयार रखें।"],["ऑनलाइन या बैंक में आवेदन करें","आधिकारिक पोर्टल पर आवेदन करें या ज़िला उद्योग केंद्र (DIC) / बैंक शाखा जाएँ। ग्राम पंचायत से भी मदद लें।"]],
+t3:"दस्तावेज़ सूची",s3:"जो आपके पास है उस पर निशान लगाएँ।",
+docs:["आधार कार्ड","पैन कार्ड","बैंक पासबुक / खाता विवरण","पासपोर्ट साइज़ फोटो","पते का प्रमाण (बिजली बिल, राशन कार्ड)","जाति प्रमाणपत्र (यदि लागू हो)","प्रोजेक्ट रिपोर्ट / व्यवसाय योजना","उद्यम पंजीकरण प्रमाणपत्र"],
+prog:(a,b)=>`${b} में से ${a} दस्तावेज़ तैयार`,
+t4:"आम सवाल",
+faq:[["क्या आवेदन के लिए एजेंट को पैसे देने होंगे?","नहीं। सरकारी पोर्टल पर आवेदन मुफ़्त है। पक्के ऋण या सब्सिडी का वादा करने वाले को पैसे न दें।"],["मेरे पास अच्छा इंटरनेट नहीं है, क्या करूँ?","ज़िला उद्योग केंद्र, बैंक शाखा, CSC केंद्र या ग्राम पंचायत कार्यालय जाएँ। वे आवेदन में मदद करेंगे।"],["क्या महिलाओं को अतिरिक्त लाभ मिलता है?","हाँ। कई योजनाओं में महिलाओं को अधिक सब्सिडी या कम ब्याज मिलता है। “महिला” श्रेणी देखें।"],["क्या गारंटी चाहिए?","₹10 लाख तक के मुद्रा ऋण और कई MSME ऋण बिना गिरवी मिलते हैं। अपने मामले में बैंक से पूछें।"]],
+t5:"मदद चाहिए?",hl:`MSME हेल्पलाइन: <a href="tel:18001806763">1800-180-6763</a> (निःशुल्क)। या नज़दीकी ज़िला उद्योग केंद्र जाएँ।`,
+foot:"यह विद्यार्थी प्रोजेक्ट की जानकारी-मार्गदर्शिका है। राशि और नियम बदल सकते हैं। आवेदन से पहले आधिकारिक वेबसाइट पर पुष्टि करें।"},
+mr:{nav:["योजना","अर्ज कसा करावा","कागदपत्रे","प्रश्न","मदत"],
+h1:"तुमच्या व्यवसायासाठी योग्य सरकारी योजना शोधा",
+hp:"महाराष्ट्रातील ग्रामीण उद्योजकांसाठी सोप्या भाषेत माहिती. भाषा निवडा, योजना शोधा आणि अर्ज कसा करायचा ते जाणून घ्या.",
+b1:"योजना पहा",b2:"अर्ज कसा करावा",
+stats:[["8","योजनांची माहिती"],["3","भाषा"],["0","सरकारी पोर्टलवर अर्ज शुल्क"]],
+t1:"सरकारी योजना",s1:"शोधा किंवा श्रेणी निवडा. कोणत्याही कार्डवर “तपशील” दाबा.",
+q:"योजना शोधा…",
+cats:{all:"सर्व",loan:"कर्ज",subsidy:"अनुदान",women:"महिला",reg:"नोंदणी",skill:"प्रशिक्षण"},
+benefit:"लाभ",who:"कोण अर्ज करू शकतो",how:"अर्ज कसा करावा",det:"तपशील",site:"अधिकृत साइट उघडा",none:"योजना सापडली नाही. दुसरा शब्द किंवा श्रेणी वापरून पहा.",
+t2:"अर्ज कसा करावा: 5 सोपे टप्पे",s2:"कल्पनेपासून बँकेतील पैशांपर्यंत याच क्रमाने जा.",
+steps:[["उद्यम नोंदणी करा","उद्यम पोर्टलवर व्यवसायाची मोफत ऑनलाइन नोंदणी. फक्त आधार आणि पॅन लागते."],["बँक खाते उघडा","स्वतःच्या किंवा व्यवसायाच्या नावावर बचत किंवा चालू खाते ठेवा. बहुतेक योजना बँकेमार्फत पैसे देतात."],["योजना निवडा","वरील यादी पहा. तुमचा व्यवसाय, श्रेणी (महिला, SC/ST इ.) आणि लागणारी रक्कम यांच्याशी जुळवा."],["कागदपत्रे तयार करा","खालील यादी पहा. झेरॉक्स आणि डिजिटल प्रती तयार ठेवा."],["ऑनलाइन किंवा बँकेत अर्ज करा","अधिकृत पोर्टलवर अर्ज करा किंवा जिल्हा उद्योग केंद्र (DIC) / बँक शाखेत जा. ग्रामपंचायतीकडूनही मदत घ्या."]],
+t3:"कागदपत्रांची यादी",s3:"तुमच्याकडे असलेल्यांवर खूण करा.",
+docs:["आधार कार्ड","पॅन कार्ड","बँक पासबुक / खाते तपशील","पासपोर्ट आकाराचे फोटो","पत्त्याचा पुरावा (वीज बिल, रेशन कार्ड)","जात प्रमाणपत्र (लागू असल्यास)","प्रकल्प अहवाल / व्यवसाय कल्पना","उद्यम नोंदणी प्रमाणपत्र"],
+prog:(a,b)=>`${b} पैकी ${a} कागदपत्रे तयार`,
+t4:"नेहमीचे प्रश्न",
+faq:[["अर्जासाठी एजंटला पैसे द्यावे लागतात का?","नाही. सरकारी पोर्टलवर अर्ज मोफत आहे. खात्रीशीर कर्ज किंवा अनुदानाचे आश्वासन देणाऱ्याला पैसे देऊ नका."],["माझ्याकडे चांगले इंटरनेट नाही, काय करू?","जिल्हा उद्योग केंद्र, बँक शाखा, CSC केंद्र किंवा ग्रामपंचायत कार्यालयात जा. ते अर्जात मदत करतील."],["महिलांना अतिरिक्त लाभ मिळतो का?","हो. अनेक योजनांत महिलांना जास्त अनुदान किंवा कमी व्याज मिळते. “महिला” श्रेणी पहा."],["हमी लागते का?","₹10 लाखांपर्यंतची मुद्रा कर्जे आणि अनेक MSME कर्जे तारणाशिवाय मिळतात. तुमच्या बाबतीत बँकेला विचारा."]],
+t5:"मदत हवी आहे?",hl:`MSME हेल्पलाइन: <a href="tel:18001806763">1800-180-6763</a> (मोफत). किंवा जवळच्या जिल्हा उद्योग केंद्रात जा.`,
+foot:"ही विद्यार्थी प्रकल्पासाठी माहिती-मार्गदर्शिका आहे. रक्कम आणि नियम बदलू शकतात. अर्ज करण्यापूर्वी अधिकृत वेबसाइटवर खात्री करा."}
+};
+const S=[
+{c:["loan","subsidy"],l:"https://www.kviconline.gov.in/pmegpeportal",
+ n:{en:"PMEGP (PM Employment Generation Programme)",hi:"PMEGP (प्रधानमंत्री रोज़गार सृजन कार्यक्रम)",mr:"PMEGP (पंतप्रधान रोजगार निर्मिती कार्यक्रम)"},
+ b:{en:"Subsidy of 15–35% on project cost",hi:"परियोजना लागत पर 15–35% सब्सिडी",mr:"प्रकल्प खर्चावर 15–35% अनुदान"},
+ w:{en:"Anyone 18+ starting a new manufacturing or service unit. Higher subsidy for rural areas, women and SC/ST.",hi:"18+ आयु का कोई भी जो नया उत्पादन/सेवा उद्योग शुरू करे। ग्रामीण, महिला और SC/ST को अधिक सब्सिडी।",mr:"18+ वयाची कोणतीही व्यक्ती जी नवीन उत्पादन/सेवा उद्योग सुरू करते. ग्रामीण, महिला आणि SC/ST यांना जास्त अनुदान."},
+ h:{en:"Apply online on the KVIC PMEGP portal, then visit the bank for the loan.",hi:"KVIC PMEGP पोर्टल पर ऑनलाइन आवेदन करें, फिर ऋण के लिए बैंक जाएँ।",mr:"KVIC PMEGP पोर्टलवर ऑनलाइन अर्ज करा, मग कर्जासाठी बँकेत जा."}},
+{c:["loan"],l:"https://www.mudra.org.in",
+ n:{en:"PM Mudra Yojana",hi:"प्रधानमंत्री मुद्रा योजना",mr:"पंतप्रधान मुद्रा योजना"},
+ b:{en:"Collateral-free loans: Shishu to ₹50,000, Kishor to ₹5 lakh, Tarun to ₹10 lakh",hi:"बिना गिरवी ऋण: शिशु ₹50,000, किशोर ₹5 लाख, तरुण ₹10 लाख तक",mr:"तारणाशिवाय कर्ज: शिशु ₹50,000, किशोर ₹5 लाख, तरुण ₹10 लाख पर्यंत"},
+ w:{en:"Small shops, dairy, poultry, tailoring, food and other non-farm businesses.",hi:"छोटी दुकानें, डेयरी, मुर्गीपालन, सिलाई, खाद्य और अन्य गैर-कृषि व्यवसाय।",mr:"लहान दुकाने, दुग्धव्यवसाय, कुक्कुटपालन, शिवणकाम, अन्न व इतर बिगर-शेती व्यवसाय."},
+ h:{en:"Apply at any bank, NBFC or microfinance institution, or through the Udyamimitra portal.",hi:"किसी भी बैंक, NBFC या माइक्रोफाइनेंस संस्था में, या उद्यमिमित्र पोर्टल से आवेदन करें।",mr:"कोणत्याही बँक, NBFC किंवा मायक्रोफायनान्स संस्थेत किंवा उद्यमीमित्र पोर्टलवरून अर्ज करा."}},
+{c:["reg"],l:"https://udyamregistration.gov.in",
+ n:{en:"Udyam Registration",hi:"उद्यम पंजीकरण",mr:"उद्यम नोंदणी"},
+ b:{en:"Free official MSME identity. Unlocks loans, subsidies and tenders",hi:"मुफ़्त आधिकारिक MSME पहचान। ऋण, सब्सिडी और टेंडर के लिए ज़रूरी",mr:"मोफत अधिकृत MSME ओळख. कर्ज, अनुदान व निविदांसाठी आवश्यक"},
+ w:{en:"Every micro, small and medium business, including home-based units.",hi:"हर सूक्ष्म, लघु और मध्यम व्यवसाय, घर से चलने वाले भी।",mr:"प्रत्येक सूक्ष्म, लघु व मध्यम व्यवसाय, घरातून चालणारेही."},
+ h:{en:"Register online with Aadhaar and PAN. No fee.",hi:"आधार और पैन से ऑनलाइन पंजीकरण करें। कोई शुल्क नहीं।",mr:"आधार आणि पॅनने ऑनलाइन नोंदणी करा. कोणतेही शुल्क नाही."}},
+{c:["loan","subsidy"],l:"https://cmegp.maharashtra.gov.in",
+ n:{en:"CMEGP (Maharashtra CM Employment Generation Programme)",hi:"CMEGP (महाराष्ट्र मुख्यमंत्री रोज़गार निर्मिती कार्यक्रम)",mr:"CMEGP (मुख्यमंत्री रोजगार निर्मिती कार्यक्रम)"},
+ b:{en:"State subsidy on bank loans for new units",hi:"नई इकाइयों के बैंक ऋण पर राज्य सब्सिडी",mr:"नवीन उद्योगांच्या बँक कर्जावर राज्य अनुदान"},
+ w:{en:"Maharashtra residents starting a new manufacturing, service or agro-based unit.",hi:"महाराष्ट्र के निवासी जो नया उत्पादन, सेवा या कृषि-आधारित उद्योग शुरू करें।",mr:"नवीन उत्पादन, सेवा किंवा कृषी-आधारित उद्योग सुरू करणारे महाराष्ट्रातील रहिवासी."},
+ h:{en:"Apply on the CMEGP portal. Your District Industries Centre guides you.",hi:"CMEGP पोर्टल पर आवेदन करें। ज़िला उद्योग केंद्र मार्गदर्शन करेगा।",mr:"CMEGP पोर्टलवर अर्ज करा. जिल्हा उद्योग केंद्र मार्गदर्शन करेल."}},
+{c:["loan","women","subsidy"],l:"https://www.standupmitra.in",
+ n:{en:"Stand-Up India",hi:"स्टैंड-अप इंडिया",mr:"स्टँड-अप इंडिया"},
+ b:{en:"Bank loan of ₹10 lakh to ₹1 crore for a new enterprise",hi:"नए उद्यम के लिए ₹10 लाख से ₹1 करोड़ का बैंक ऋण",mr:"नवीन उद्योगासाठी ₹10 लाख ते ₹1 कोटी बँक कर्ज"},
+ w:{en:"Women and SC/ST entrepreneurs starting their first business (manufacturing, services or trading).",hi:"पहला व्यवसाय शुरू करने वाली महिला और SC/ST उद्यमी।",mr:"पहिला व्यवसाय सुरू करणाऱ्या महिला आणि SC/ST उद्योजक."},
+ h:{en:"Apply on the Stand-Up Mitra portal or at a bank branch.",hi:"स्टैंड-अप मित्र पोर्टल या बैंक शाखा में आवेदन करें।",mr:"स्टँड-अप मित्र पोर्टल किंवा बँक शाखेत अर्ज करा."}},
+{c:["women","loan"],l:"https://umed.in",
+ n:{en:"UMED (Maharashtra Rural Livelihood Mission)",hi:"उमेद (महाराष्ट्र ग्रामीण आजीविका मिशन)",mr:"उमेद (महाराष्ट्र ग्रामीण जीवनोन्नती अभियान)"},
+ b:{en:"Training, bank linkage and loans through women’s self-help groups",hi:"महिला स्वयं सहायता समूहों के ज़रिए प्रशिक्षण, बैंक जुड़ाव और ऋण",mr:"महिला बचत गटांमार्फत प्रशिक्षण, बँक जोडणी व कर्ज"},
+ w:{en:"Rural women who join or form a self-help group (SHG).",hi:"ग्रामीण महिलाएँ जो स्वयं सहायता समूह से जुड़ें या बनाएँ।",mr:"बचत गटात सामील होणाऱ्या किंवा गट स्थापन करणाऱ्या ग्रामीण महिला."},
+ h:{en:"Contact your Gram Panchayat or block-level UMED office.",hi:"अपनी ग्राम पंचायत या ब्लॉक स्तर के उमेद कार्यालय से संपर्क करें।",mr:"तुमची ग्रामपंचायत किंवा तालुका स्तरावरील उमेद कार्यालयाशी संपर्क साधा."}},
+{c:["skill","loan"],l:"https://pmvishwakarma.gov.in",
+ n:{en:"PM Vishwakarma",hi:"पीएम विश्वकर्मा",mr:"पीएम विश्वकर्मा"},
+ b:{en:"Skill training, toolkit support and low-interest credit for traditional artisans",hi:"पारंपरिक कारीगरों के लिए कौशल प्रशिक्षण, टूलकिट सहायता और कम ब्याज पर ऋण",mr:"पारंपरिक कारागिरांसाठी कौशल्य प्रशिक्षण, टूलकिट मदत व कमी व्याजाचे कर्ज"},
+ w:{en:"Artisans and craftspeople such as carpenters, blacksmiths, potters, tailors and cobblers.",hi:"सुतार, लोहार, कुम्हार, दर्ज़ी, मोची जैसे कारीगर।",mr:"सुतार, लोहार, कुंभार, शिंपी, चांभार यांसारखे कारागीर."},
+ h:{en:"Register at a Common Service Centre or on the PM Vishwakarma portal.",hi:"कॉमन सर्विस सेंटर या पीएम विश्वकर्मा पोर्टल पर पंजीकरण करें।",mr:"कॉमन सर्व्हिस सेंटर किंवा पीएम विश्वकर्मा पोर्टलवर नोंदणी करा."}},
+{c:["skill"],l:"https://www.skillindiadigital.gov.in",
+ n:{en:"Skill India / Entrepreneurship Training",hi:"स्किल इंडिया / उद्यमिता प्रशिक्षण",mr:"स्किल इंडिया / उद्योजकता प्रशिक्षण"},
+ b:{en:"Free or low-cost short courses with certificates",hi:"प्रमाणपत्र के साथ निःशुल्क या कम शुल्क के छोटे कोर्स",mr:"प्रमाणपत्रासह मोफत किंवा कमी शुल्काचे लघु अभ्यासक्रम"},
+ w:{en:"Youth and adults who want business, digital or trade skills.",hi:"व्यवसाय, डिजिटल या व्यावसायिक कौशल सीखने वाले युवा और वयस्क।",mr:"व्यवसाय, डिजिटल किंवा व्यावसायिक कौशल्ये शिकू इच्छिणारे तरुण व प्रौढ."},
+ h:{en:"Create a free account on the Skill India Digital portal and pick a course.",hi:"स्किल इंडिया डिजिटल पोर्टल पर मुफ़्त खाता बनाएँ और कोर्स चुनें।",mr:"स्किल इंडिया डिजिटल पोर्टलवर मोफत खाते तयार करा आणि अभ्यासक्रम निवडा."}}
+];
+let L=localStorage.getItem("lang")||"en",C="all",done={};
+try{done=JSON.parse(localStorage.getItem("docs")||"{}")}catch(e){}
+const $=id=>document.getElementById(id);
+function render(){
+ const t=T[L];document.documentElement.lang=L;
+ $("nav").innerHTML=["schemes","steps","docs","faq","help"].map((k,i)=>`<a href="#${k}">${t.nav[i]}</a>`).join("");
+ ["h1","b1","b2","t1","s1","t2","s2","t3","s3","t4","t5"].forEach(k=>$(k).textContent=t[k]);
+ $("hp").textContent=t.hp;$("hl").innerHTML=t.hl;$("foot").textContent=t.foot;$("q").placeholder=t.q;
+ $("stats").innerHTML=t.stats.map(s=>`<div><b>${s[0]}</b><span>${s[1]}</span></div>`).join("");
+ $("chips").innerHTML=Object.entries(t.cats).map(([k,v])=>`<button class="chip" data-c="${k}" aria-pressed="${k==C}">${v}</button>`).join(" ");
+ $("stepList").innerHTML=t.steps.map(s=>`<div class="step"><h3>${s[0]}</h3><p>${s[1]}</p></div>`).join("");
+ $("faqList").innerHTML=t.faq.map(f=>`<details><summary>${f[0]}</summary><p>${f[1]}</p></details>`).join("");
+ $("docList").innerHTML=t.docs.map((d,i)=>`<li><label><input type="checkbox" data-d="${i}" ${done[i]?"checked":""}>${d}</label></li>`).join("");
+ prog();grid();
+ document.querySelectorAll(".lang button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.l==L));
+}
+function grid(){
+ const t=T[L],q=$("q").value.trim().toLowerCase();
+ const r=S.filter(s=>(C=="all"||s.c.includes(C))&&(!q||(s.n[L]+s.b[L]+s.w[L]).toLowerCase().includes(q)));
+ $("grid").innerHTML=r.length?r.map(s=>`<article class="card">${s.c.map(c=>`<span class="tag">${t.cats[c]}</span> `).join("")}<h3>${s.n[L]}</h3><p class="big">${t.benefit}: ${s.b[L]}</p><details><summary>${t.det}</summary><p><b>${t.who}:</b> ${s.w[L]}</p><p><b>${t.how}:</b> ${s.h[L]}</p><a class="btn" href="${s.l}" target="_blank" rel="noopener">${t.site}</a></details></article>`).join(""):`<p class="empty">${t.none}</p>`;
+}
+function prog(){const n=T[L].docs.length,a=Object.values(done).filter(Boolean).length;$("prog").textContent=T[L].prog(a,n)}
+document.addEventListener("click",e=>{
+ const l=e.target.closest("[data-l]");if(l){L=l.dataset.l;try{localStorage.setItem("lang",L)}catch(x){}render()}
+ const c=e.target.closest("[data-c]");if(c){C=c.dataset.c;render()}
+});
+document.addEventListener("change",e=>{
+ if(e.target.dataset.d!==undefined){done[e.target.dataset.d]=e.target.checked;try{localStorage.setItem("docs",JSON.stringify(done))}catch(x){}prog()}
+});
+$("q").addEventListener("input",grid);
+render();
+</script>
+</body>
+</html>
